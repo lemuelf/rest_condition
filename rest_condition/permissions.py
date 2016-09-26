@@ -89,7 +89,7 @@ class Condition(object):
             else:
                 if _is_permission_factory(condition):
                     condition = condition()
-                result = getattr(condition, permission_name)(*args, **kwargs)
+                result = bool(getattr(condition, permission_name)(*args, **kwargs))
 
             if reduced_result is _NONE:
                 reduced_result = result
